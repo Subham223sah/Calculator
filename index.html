@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgb(79, 76, 76);
+        }
+
+        .container {
+            background-color: rgb(19, 19, 19);
+            max-width: 300px;
+            margin: 5rem auto;
+            padding: 1rem 0;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .display input {
+            width: 290px;
+            font-size: 3rem;
+            padding: 0 0.1rem;
+            border-radius: 10px;
+            text-align: end;
+        }
+
+        .cal-body {
+            margin-top: 1.5rem;
+        }
+
+        .row button {
+            width: 3.8rem;
+            height: 3rem;
+            margin: 0.3rem;
+            border-radius: 10px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+
+        .row button:hover {
+            background-color: rgb(100, 100, 100);
+            box-shadow: 2rem;
+        }
+
+        #equal {
+            width: 8.4rem;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="display">
+            <input type="text" placeholder="00000" id="display">
+        </div>
+
+        <div class="cal-body">
+            <div class="row">
+                <button onclick="ac()">AC</button>
+                <button onclick="del()">DEL</button>
+                <button onclick="add('%')">%</button>
+                <button onclick="add('/')">/</button>
+            </div>
+            <div class="row">
+                <button onclick="add('7')">7</button>
+                <button onclick="add('8')">8</button>
+                <button onclick="add('9')">9</button>
+                <button onclick="add('*')">*</button>
+            </div>
+            <div class="row">
+                <button onclick="add('4')">4</button>
+                <button onclick="add('5')">5</button>
+                <button onclick="add('6')">6</button>
+                <button onclick="add('-')">-</button>
+            </div>
+            <div class="row">
+                <button onclick="add('1')">1</button>
+                <button onclick="add('2')">2</button>
+                <button onclick="add('3')">3</button>
+                <button onclick="add('+')" id="plus">+</button>
+            </div>
+            <div class="row">
+                <button onclick="add('0')">0</button>
+                <button onclick="add('.')">.</button>
+                <button id="equal" onclick="calculate()">=</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function add(num) {
+            let display = document.getElementById('display');
+            display.value += num;
+        }
+
+        function ac() {
+            let display = document.getElementById('display');
+            display.value = '';
+        }
+
+        function del() {
+            let display = document.getElementById('display');
+            num1 = display.value;
+            num2 = num1.slice(0, -1);
+            display.value = num2;
+        }
+
+        function calculate() {
+            let display = document.getElementById('display');
+            result =  eval(display.value);
+            display.value = result;
+        }
+
+    </script>
+
+</body>
+
+</html>
